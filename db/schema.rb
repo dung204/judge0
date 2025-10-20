@@ -2,23 +2,23 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_28_155848) do
+ActiveRecord::Schema.define(version: 2025_10_20_140642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "clients", id: :string, force: :cascade do |t|
+  create_table "judge0_clients", id: :string, force: :cascade do |t|
   end
 
-  create_table "languages", id: :serial, force: :cascade do |t|
+  create_table "judge0_languages", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "compile_cmd"
     t.string "run_cmd"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2022_05_28_155848) do
     t.boolean "is_archived", default: false
   end
 
-  create_table "submissions", id: :serial, force: :cascade do |t|
+  create_table "judge0_submissions", id: :serial, force: :cascade do |t|
     t.text "source_code"
     t.integer "language_id"
     t.text "stdin"
@@ -62,10 +62,6 @@ ActiveRecord::Schema.define(version: 2022_05_28_155848) do
     t.boolean "enable_network"
     t.datetime "started_at"
     t.datetime "queued_at"
-    t.datetime "updated_at"
-    t.string "queue_host"
-    t.string "execution_host"
-    t.index ["token"], name: "index_submissions_on_token"
   end
 
 end
